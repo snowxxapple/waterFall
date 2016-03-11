@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>瀑布流照片</title>
+    <meta charset='utf-8'>
+    <style type="text/css">
+    * {
+        margin: 0px;
+    }
+    
+    .box {
+    	
+        float: left;/*给所有的盒子设置向左浮动，此时div按行排列，*/
+        padding: 10px;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 5px #ccc;
+        border-radius: 5px;
+
+    }
+    img{
+    	width:200px;
+    	height:auto;
+    }
+    </style>
+</head>
+
+<body>
+    <div class='box'>
+        <img src="dropwall/1.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/2.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/3.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/4.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/5.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/6.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/7.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/8.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/9.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/10.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/11.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/12.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/13.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/14.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/15.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/16.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/17.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/18.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/19.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/20.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/21.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/22.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/23.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/24.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/25.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/1.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/2.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/3.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/4.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/5.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/6.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/7.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/8.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/9.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/10.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/11.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/12.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/13.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/14.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/15.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/16.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/17.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/18.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/19.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/20.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/21.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/22.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/23.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/24.jpg">
+    </div>
+    <div class='box'>
+        <img src="dropwall/25.jpg">
+    </div>
+</body>
+<script src='xx/js/jquery-1.11.3.js'></script>
+<script type="text/javascript">
+	window.onload=function(){
+        dropwall();
+        var id=1;//获取照片文件 一共六个json文件
+		window.onscroll=function(){			
+			if (slide()) {     //一行六张照片           
+                if(id<6)
+                {
+                    id=id+1;
+                }
+                if(id>=6){
+                    id=1;
+                }
+                
+				// console.log('load');
+                console.log(id);
+				$.ajax({//获取照片
+					url: 'dropwall'+id+'.json',
+					type: 'GET',
+					dataType: 'json'
+					
+				})
+				.done(function(ll) {
+					console.log("success");
+					for(n=0;n<ll.imgIndex.length;n++){
+						$('.box').last().after("<div class='box'><img src='dropwall/"+ll.imgIndex[n].imgSrc+".jpg'></div>");
+					}
+                    dropwall();//必须放在done函数中，否则会有问题，只有在获取图片后，才操作图片的摆放
+
+				})               
+                .fail(function(a,b,c) {
+                    console.log("error",a,b,c);
+                }) 
+
+			}
+	}
+    function dropwall(){
+        var divWidth=$('.box').eq(0).outerWidth();//是div不是img  在jQuery中，width()方法用于获得元素宽度；innerWidth()方法用于获得包括内边界的元素宽度；outerWidth()用于获得包括内边界和边框的元素宽度，如果outerWidth(true)则外边界也会被包括进来，因此width()<innerWidth()<outerWidth()<outerWidth(true);
+        var brWidth=document.documentElement.clientWidth;
+        var num=Math.floor(brWidth/divWidth);//每一行能放下的div个数
+        var colHeight=new Array();//当前行的行高数组
+        // console.log(brWidth);
+        // console.log(divWidth);
+        // console.log(num);
+
+        //遍历所有的盒子，给每个盒子添加方法
+        $('.box').each(function(index, el) {
+            var boxHeight=$('.box').eq(index).outerHeight();//当前盒子的高度，是一个值          
+            if(index<num){//第一排，把图片的高度存放到数组中，
+                // console.log(boxHeight);
+                colHeight[index]=boxHeight;//
+                // console.log(colHeight);
+            }
+            else{//除了第一行，接下来图片的摆放。找到当前最矮列，然后把图片放到该列下，并重新更新列的高度
+                var smallHeight=Math.min.apply(null,colHeight);//找到当前最矮的列
+                // console.log(smallHeight);
+                var smallIndex=$.inArray(smallHeight, colHeight);//inArray函数，在数组中找对应元素的index值，输出最矮的列对应的索引值
+                // console.log(smallIndex);
+                $('.box').eq(index).css({//操纵除了第一行的其他元素，把元素放在当前列高最矮的地方
+                    position:'absolute',
+                    top: smallHeight,//纵坐标为上一行最矮图片的高度
+                    left:$('.box').eq(smallIndex).position().left//横坐标与最爱图片的横坐标相同 
+                });
+                colHeight[smallIndex]=smallHeight+$('.box').eq(index).outerHeight();//当前最矮的列的高度更新
+            }
+        });
+    }
+	function slide(){
+		var box=$('.box');
+		var imgLast=Math.floor(box.last().outerHeight()/2)+box.last().get(0).offsetTop;
+		var documentHeight=$(window).scrollTop()+$(window).height();
+		return(documentHeight>imgLast?true:false);//加载条件，如果鼠标的滚动距离加上可视区的高度大于最后一个盒子的offsettop+图片自身距离的一半，则加载图片
+}
+}
+</script>
+</html>
