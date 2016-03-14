@@ -17,7 +17,7 @@ Math.min(para)中参数列表只能是(para1,para2,para3,....)，而apply可以�
 function.apply(obj,args)<br/>
 obj:代替function 里面的this对象<br/>
 args:数组形式的参数列表，将数组转化为参数列表后传递给function  [para1,para2,para3,.....]-->(para1,para2,para3,....)<br/>
-call: 和apply意思一样，只是参数列表不一样call(obj,args),args只能是普通的参数列表。
+call: 和apply意思一样，只是参数列表不一样call(obj,args),args只能是普通的参数列表。<br/>
 (6) **apply妙用**
 * 可以将数组转化成参数列表
 ```javascript
