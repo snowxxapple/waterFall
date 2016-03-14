@@ -7,19 +7,19 @@
 ```javascript
    width()<innerWidth()<outerWidth()<outerWidth(true)
 ```
-4. apply(obj,arguments)<br/>
+4. apply(obj,arguments)
 ```javascript
 Math.min.apply(null,colHeight);//找到数组colHeight中的最小值
 ```
 Math.min(para)中参数列表只能是(para1,para2,para3,....)，而apply可以把数组转化成参数列表。<br/>
 5. **apply详解**
-* apply:能够劫持另外一个对象的方法，继承另外一个对象的属性<br>/
+* apply:能够劫持另外一个对象的方法，继承另外一个对象的属性
 function.apply(obj,args)<br/>
 obj:代替function 里面的this对象<br/>
 args:数组形式的参数列表，将数组转化为参数列表后传递给function  [para1,para2,para3,.....]-->(para1,para2,para3,....)<br/>
 call: 和apply意思一样，只是参数列表不一样call(obj,args),args只能是普通的参数列表。
 6. **apply妙用**
-* 可以将数组转化成参数列表<br/>
+* 可以将数组转化成参数列表
 ```javascript
 Math.max.apply(null,arr)//找到数组中的最大值
 Math.min.apply(null,arr)//找到数组中的最小值
