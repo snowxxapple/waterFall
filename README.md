@@ -20,7 +20,7 @@ call: 和apply意思一样，只是参数列表不一样call(obj,args),args只�
 Math.max.apply(null,arr)//找到数组中的最大值
 Math.min.apply(null,arr)//找到数组中的最小值
 ```
-+ 合并两个数组.push()
+* 合并两个数组.push()
 arr.push(para1,para2...)只接受参数列表,没有提供push一个数组。eg:
 ```javascript
 var arr1=new Array('1','2','3');
