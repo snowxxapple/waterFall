@@ -6,3 +6,26 @@
 如果鼠标的滚动距离$(window).scrollTop()加上可视区的高度$(window).height()大于最后一个盒子的offsettop+图片自身,距离的一半，则自动加载图片。<br/>
 将要加载图片的名字写在了.json文件中，利用ajax模拟从后台读取数据，加载文件的过程。<br/>
 **jQuery的width()<innerWidth()<outerWidth()<outerWidth(true)**
+(1)apply(obj,arguments)<br/>
+```javascript
+Math.min.apply(null,colHeight);//找到数组colHeight中的最小值
+```
+Math.min(para)中参数列表只能是(para1,para2,para3,....)，而apply可以把数组转化成参数列表
+**apply详解**
+apply:能够劫持另外一个对象的方法，继承另外一个对象的属性<br>/
+function.apply(obj,args)<br/>
+obj:代替function 里面的this对象<br/>
+args:数组形式的参数列表，将数组转化为参数列表后传递给function  [para1,para2,para3,.....]-->(para1,para2,para3,....)<br/>
+call: 和apply意思一样，只是参数列表不一样call(obj,args),args只能是普通的参数列表
+(2)**apply妙用**
+可以将数组转化成参数列表
+**Math.max.apply(null,arr)**```javascript//找到数组中的最大值```
+**Math.min.apply(null,arr)**```javascript//找到数组中的最小值```
+**合并两个数组.push()**
+arr.push(para1,para2...)只接受参数列表,没有提供push一个数组。eg:
+```javascript
+var arr1=new Array('1','2','3');
+var arr2=new Array('4','5','6');
+arr1.push.apply(arr1,arr2);//arr1-->[1,2,3,4,5,,6]
+```
+arr1调用apply方法，将arr2数组转化成参数列表，之后arr1调用push方法，将已经转化成参数列表的arr2,push到arr1的尾部
